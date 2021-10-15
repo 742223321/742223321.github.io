@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    vue学习笔记 |
+    
+    This is my jack-su blog
+  </title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-vue" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  vue学习笔记
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/05/24/vue/" class="article-date">
+  <time datetime="2021-05-24T10:21:31.000Z" itemprop="datePublished">2021-05-24</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h2 id="记录vue学习笔记"><a href="#记录vue学习笔记" class="headerlink" title="记录vue学习笔记"></a>记录vue学习笔记</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>记录一些学习一些vue的笔记，本人vue菜鸟</p>
+<h4 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h4><h4 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h4><h5 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1.安装Node.js"></a>1.安装Node.js</h5><p>官网地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://nodejs.cn</span><br></pre></td></tr></table></figure>
+
+<p>查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/24/vue/a01.png"> </p>
+<p>由于从官网下载镜像太慢，建议配置成国内镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry npm.taobao.org </span><br></pre></td></tr></table></figure>
+
+<p>查看镜像下载的网址是否更换为我们的国内镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、安装npm"><a href="#2、安装npm" class="headerlink" title="2、安装npm"></a>2、安装npm</h5><ul>
+<li>安装npm插件——全局变量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm instal npm -g</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果只想在单个项目安装项目需要的库，不用加 -g</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 包</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看npm版本</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/24/vue/a02.png"> </p>
+<ul>
+<li>指定安装包的版本   </li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 包@+版本号</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新到最新版本  </li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update 包</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>卸载包</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall 包</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、配置npm"><a href="#3、配置npm" class="headerlink" title="3、配置npm"></a>3、配置npm</h5><p>生成配置文件，指定配置信息 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init </span><br></pre></td></tr></table></figure>
+
+<p>$$<br>{<br>  “name”: “vue-npm”,    //项目名<br>  “version”: “1.0.0”,    //版本<br>  “description”: “npm配置”,  //描述<br>  “main”: “index.js”,    //主访问文件 ,主入口文件 </p>
+<p>  “scripts”: {<br>    “test”: “echo &quot;Error: no test specified&quot; &amp;&amp; exit 1”<br>  },<br>  “repository”: {   //托管方式<br>    “type”: “git”,<br>    “url”: “git”<br>  },<br>  “keywords”: [   //搜索关键字<br>    “vue”,<br>    “npm”<br>  ],<br>  “author”: “jack-su”,  //作者<br>  “license”: “MIT”<br>}<br>$$</p>
+<h5 id="4、yarn的安装"><a href="#4、yarn的安装" class="headerlink" title="4、yarn的安装"></a>4、yarn的安装</h5><p>安装 yarn </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn</span><br></pre></td></tr></table></figure>
+
+<p>查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn --version</span><br></pre></td></tr></table></figure>
+
+<p>也可以设置为 淘宝镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn config set registry https://registry npm.taobao.org </span><br></pre></td></tr></table></figure>
+
+<h5 id="5、脚手架的搭建"><a href="#5、脚手架的搭建" class="headerlink" title="5、脚手架的搭建"></a>5、脚手架的搭建</h5><p>升级或者安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+
+<p>查看cli版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue --version  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/24/vue/a05-1.png"> </p>
+<h5 id="6、webpack的搭建和使用"><a href="#6、webpack的搭建和使用" class="headerlink" title="6、webpack的搭建和使用"></a>6、webpack的搭建和使用</h5><h6 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h6><ul>
+<li><p>打开一个新的文件夹，名字webpack5</p>
+</li>
+<li><p>生成配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init --yes  忽略配置信息，默认信息</span><br></pre></td></tr></table></figure></li>
+<li><p>安装webpack，需要两个包：webpack包、webpack -cli</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack webpack -cli -D</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h6 id="编译模式"><a href="#编译模式" class="headerlink" title="编译模式"></a>编译模式</h6><p>打包命令–指定是生产模式还是开发模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webpack --mode development  ---开发模式</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webpack --mode production  ---生产模式</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="webpack常用配置"><a href="#webpack常用配置" class="headerlink" title="webpack常用配置"></a>webpack常用配置</h6><ul>
+<li><p>多入口和多出口的情况配置</p>
+</li>
+<li><p>打包和压缩HTML资源</p>
+</li>
+<li><p>webpack打包多个HTML文件</p>
+</li>
+<li><p>webpack打包css资源</p>
+</li>
+<li><p>提取css为单独文件</p>
+</li>
+<li><p>处理css的浏览器兼容</p>
+</li>
+<li><p>压缩css内容</p>
+</li>
+<li><p>webpack打包图片资源</p>
+</li>
+<li><p>打包其他字体图标</p>
+</li>
+<li><p>使用eslint对js语法检查</p>
+</li>
+<li><p>配置开发服务器-devServer</p>
+</li>
+<li><p> HMR热交换</p>
+</li>
+<li><p>去除无用代码</p>
+</li>
+</ul>
+<h4 id="二、ES6语法的学习"><a href="#二、ES6语法的学习" class="headerlink" title="二、ES6语法的学习"></a>二、ES6语法的学习</h4><h5 id="认识ES6"><a href="#认识ES6" class="headerlink" title="认识ES6"></a>认识ES6</h5><ul>
+<li>对语法的改进，功能的增加</li>
+<li>使用VUE、React、小程序、Nodejs等都在使用</li>
+<li>ES6以上的版本再等等</li>
+</ul>
+<h6 id="1、let-关键字语法的运用"><a href="#1、let-关键字语法的运用" class="headerlink" title="1、let 关键字语法的运用"></a>1、let 关键字语法的运用</h6><ul>
+<li>可以修改变量</li>
+<li>不存在相同变量的声明</li>
+<li>可以先定义，在赋值</li>
+</ul>
+<p><img src="/2021/05/24/vue/b01.jpg"> </p>
+<h6 id="2、const的使用"><a href="#2、const的使用" class="headerlink" title="2、const的使用"></a>2、const的使用</h6><ul>
+<li>声明一个只读的常量，不可改变</li>
+<li>一旦声明就立刻初始化</li>
+<li>不可以先定义，在赋值</li>
+<li>如果是声明了一个对象，那么里面的属性值可以改变</li>
+</ul>
+<p><img src="/2021/05/24/vue/b01.jpg"> </p>
+<h6 id="3、arrow-箭头函数和this的使用"><a href="#3、arrow-箭头函数和this的使用" class="headerlink" title="3、arrow-箭头函数和this的使用"></a>3、arrow-箭头函数和this的使用</h6><h6 id="4、数组新增的高级功能"><a href="#4、数组新增的高级功能" class="headerlink" title="4、数组新增的高级功能"></a>4、数组新增的高级功能</h6><p>定义数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let goods = [30,20,80,50 ,5,3,1,86,9];</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>filter  过滤器</p>
+<p>可以过滤我们数组数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 取出大于10的</span><br><span class="line">       let goods1 =  goods.filter(function(n)&#123;</span><br><span class="line"></span><br><span class="line">            return n&gt;=10;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>map 映射</p>
+<p>可以对过滤后的数组进行处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 打五折</span><br><span class="line">        console.log(goods1)</span><br><span class="line">        let goods2 =  goods.map(function(n)&#123;</span><br><span class="line"></span><br><span class="line">            return n*0.5;</span><br><span class="line"></span><br><span class="line">           &#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>reduce 汇总</p>
+<p>数组的数组总和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//    汇总</span><br><span class="line">        let sum = goods2.reduce(function(s,n)&#123;</span><br><span class="line">            return s+n;</span><br><span class="line"></span><br><span class="line">        &#125;,0)</span><br><span class="line">        console.log(sum)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>链式编程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 链式编程</span><br><span class="line"> let goods = [30,20,80,50 ,5,3,1,86,9];</span><br><span class="line">     let sum = goods.filter((n)=&gt; n&gt;=10 ).map((n)=&gt; n*0.5).reduce((s,n)=&gt; s+n);</span><br><span class="line">     console.log(sum)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h6 id="5、Set和Map数据"><a href="#5、Set和Map数据" class="headerlink" title="5、Set和Map数据"></a>5、Set和Map数据</h6><p>Map和Set的用法 </p>
+<p> <img src="/2021/05/24/vue/b05.jpg"> </p>
+<h6 id="6、字符串新增的方法"><a href="#6、字符串新增的方法" class="headerlink" title="6、字符串新增的方法"></a>6、字符串新增的方法</h6><ul>
+<li>startsWith - 判断以什么字符串开头</li>
+<li>endsWith - 判断以什么字符串结尾</li>
+</ul>
+<h6 id="7、三点运算符"><a href="#7、三点运算符" class="headerlink" title="7、三点运算符"></a>7、三点运算符</h6><h6 id="8、新增class和JSON的运用"><a href="#8、新增class和JSON的运用" class="headerlink" title="8、新增class和JSON的运用"></a>8、新增class和JSON的运用</h6><ul>
+<li><p>class</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line"></span><br><span class="line">	construc(name,age,sex)&#123;</span><br><span class="line">		this.name;</span><br><span class="line">		this.age;</span><br><span class="line">		this.sex;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><p>JSON</p>
+<ul>
+<li><p>对象转字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let str = JSON.stringify(obj);</span><br></pre></td></tr></table></figure></li>
+<li><p>字符串转对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let obj = JSON.parse(str);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h6 id="9、模块化编程"><a href="#9、模块化编程" class="headerlink" title="9、模块化编程"></a>9、模块化编程</h6><p>导出js文件中的变量 和方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">导出多个：export&#123; 方法名 或者 变量名 用 , 隔开&#125;；单个直接在属性或方法前面加 export</span><br></pre></td></tr></table></figure>
+
+<p>导入js文件的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">improt &#123; 方法名 或者 变量名 用 , 隔开 &#125; from &#x27;js文件&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="三、axios的学习"><a href="#三、axios的学习" class="headerlink" title="三、axios的学习"></a>三、axios的学习</h4><h5 id="认识axios"><a href="#认识axios" class="headerlink" title="认识axios"></a>认识axios</h5><ul>
+<li><p>结合webpack使用，代码必须打包</p>
+</li>
+<li><p>异步网络请求</p>
+</li>
+<li><p>Axios简单的理解就是ajax的封装</p>
+</li>
+<li><p>Axios是一个基于promise的HTTP库，支持node端和浏览器端</p>
+</li>
+<li><p>使用Promise管理异步，告别传统callback方式丰富的配置项，支持拦截器等高级配置</p>
+</li>
+<li><p>转换请求数据和响应数据</p>
+</li>
+</ul>
+<h6 id="1、ResuFul-API规范"><a href="#1、ResuFul-API规范" class="headerlink" title="1、ResuFul API规范"></a>1、ResuFul API规范</h6><p>项目的两种编程方式-模板式编程和接口式编程 RestFul API规范（URL，HTTP，版本，状态码，返回值，请求条件等规范） </p>
+<ul>
+<li><p>GET（SELECT）：从服务器取出资源（一项或多项）</p>
+</li>
+<li><p>POST（CREATE）：在服务器新建一个资源</p>
+</li>
+<li><p>PUT （UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）</p>
+</li>
+<li><p>PATCH （UPDATE）：在服务器更新资源（客户端提供改变的属性）</p>
+</li>
+<li><p>DELETE （DELETE）：从服务器删除资源</p>
+</li>
+</ul>
+<p>我们配置接口时，这只是一种规范，只是建议大家按照规范来使用而已。</p>
+<h6 id="2、ES6中Promise的原理和应用"><a href="#2、ES6中Promise的原理和应用" class="headerlink" title="2、ES6中Promise的原理和应用"></a>2、ES6中Promise的原理和应用</h6><p>主要用于异步计算<br>可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果可以在对象之间传递和操作promise，帮助我们处理队列</p>
+<p>异步回调的问题：<br>之前处理异步是通过纯粹的回调函数的形式进行处理很容易进入到回调地狱中，剥夺了函数return的能力问题可以解决，但是难以读懂，维护困难<br>稍有不慎就会踏入回调地狱-嵌套层次深，不好维护</p>
+<p>Promise<br>promise是一个对象，对象和函数的区别就是对象可以保存状态，函数不可以（闭包除外） 并未剥夺函数return的能力，因此无需层层传递callback，进行回调获取数据<br>代码风格，容易理解，便于维护<br>多个异步等待合并便于解决</p>
+<h6 id="3、axios的入门"><a href="#3、axios的入门" class="headerlink" title="3、axios的入门"></a>3、axios的入门</h6><p>安装axios</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i axios -s</span><br></pre></td></tr></table></figure>
+
+<p>导入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">improt axios from &quot;axios&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="4、axios生产环境的运用"><a href="#4、axios生产环境的运用" class="headerlink" title="4、axios生产环境的运用"></a>4、axios生产环境的运用</h6><p>开启跨域访问加这个在顶部，相当于加一个注解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header(&#x27;Access-Control-Allow-Origin:*&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>获取数据的写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#x27;url地址&#x27;).then(res=&gt;&#123;</span><br><span class="line">console.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h6 id="5、axios-Post和Get的请求方式"><a href="#5、axios-Post和Get的请求方式" class="headerlink" title="5、axios-Post和Get的请求方式"></a>5、axios-Post和Get的请求方式</h6><p>import axios from ‘axios’;</p>
+<p>axios.request(config)</p>
+<p>axios.get(url[,config]) </p>
+<p>axios.delete(url[ config) </p>
+<p>axios.head(url, config])</p>
+<p>axios.post(url[, data[, config]) </p>
+<p>axios.put(url, data[, config]) </p>
+<p>axios.patch(url, data[, config])</p>
+<p><strong>区分请求方式追加参数</strong> </p>
+<p>get</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#x27;url地址&#x27;,&#123;params&#123;id:1&#125;&#125;).then(res=&gt;&#123;</span><br><span class="line">console.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>post</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#x27;url地址&#x27;,&quot;name=xxx&amp;age=xxx&amp;&quot;).then(res=&gt;&#123;</span><br><span class="line">console.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="6、并发访问处理"><a href="#6、并发访问处理" class="headerlink" title="6、并发访问处理"></a>6、并发访问处理</h6><p>一次性请求多个接口，然后数据合并 ，合并之后是一个数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">axios.all([</span><br><span class="line"> </span><br><span class="line">//请求多个url</span><br><span class="line">axios.get(&#x27;第一个链接&#x27;),</span><br><span class="line">axios.get(&#x27;第二个链接&#x27;),</span><br><span class="line">axios.get(&#x27;第n个链接&#x27;),</span><br><span class="line"></span><br><span class="line">]).then(res=&gt;&#123;</span><br><span class="line"></span><br><span class="line">console.log(res)</span><br><span class="line"></span><br><span class="line">//既然是数组我们也可以分开</span><br><span class="line">//console.log(res[0])</span><br><span class="line">//console.log(res[1])</span><br><span class="line">//console.log(res[n])</span><br><span class="line"></span><br><span class="line">//第二种拆分的方法-回调函数的方式</span><br><span class="line">axios.spread((res1,res2,res3)=&gt;&#123;</span><br><span class="line">//console.log(res1)</span><br><span class="line">//console.log(res2)</span><br><span class="line">//console.log(res3)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;)ccatch(err=&gt;&#123;</span><br><span class="line"></span><br><span class="line">console.log(err)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="7、axios全局配置的方案"><a href="#7、axios全局配置的方案" class="headerlink" title="7、axios全局配置的方案"></a>7、axios全局配置的方案</h6><p>  <img src="/2021/05/24/vue/c07.jpg"> </p>
+<p>可以把url写入配置文件，并调用</p>
+<p>  <img src="/2021/05/24/vue/c07-2.jpg"> </p>
+<h6 id="8、axios实例封装"><a href="#8、axios实例封装" class="headerlink" title="8、axios实例封装"></a>8、axios实例封装</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let xxxx = axios.create(&#123;</span><br><span class="line">	</span><br><span class="line">	baseURL:&quot;url地址&quot;,</span><br><span class="line">	timeout: 时间 </span><br><span class="line"></span><br><span class="line">&#125;); </span><br></pre></td></tr></table></figure>
+
+<h6 id="9、axios的拦截器"><a href="#9、axios的拦截器" class="headerlink" title="9、axios的拦截器"></a>9、axios的拦截器</h6><p>分为</p>
+<ul>
+<li><p>请求拦截器</p>
+<p><img src="/2021/05/24/vue/c09-1.jpg"> </p>
+</li>
+<li><p>响应拦截器</p>
+<p>  <img src="/2021/05/24/vue/c09-2.jpg"> </p>
+</li>
+</ul>
+<h4 id="四、进入Vue"><a href="#四、进入Vue" class="headerlink" title="四、进入Vue"></a>四、进入Vue</h4><p>Vue<strong>全家桶</strong></p>
+<h6 id="1、Vue开发初体验"><a href="#1、Vue开发初体验" class="headerlink" title="1、Vue开发初体验"></a>1、Vue开发初体验</h6><h6 id="2、Vue-Cli-脚手架"><a href="#2、Vue-Cli-脚手架" class="headerlink" title="2、Vue Cli 脚手架"></a>2、Vue Cli 脚手架</h6><p> <img src="/2021/05/24/vue/d02.jpg"> </p>
+<p>安装到全局</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+
+<p>查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
+
+<p>创建项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue cerate 项目名字</span><br></pre></td></tr></table></figure>
+
+<h6 id="3、options基础定义和MVVM模式"><a href="#3、options基础定义和MVVM模式" class="headerlink" title="3、options基础定义和MVVM模式"></a>3、options基础定义和MVVM模式</h6><h6 id="4、插值和指令"><a href="#4、插值和指令" class="headerlink" title="4、插值和指令"></a>4、插值和指令</h6><p>插值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">v-pre</span><br><span class="line">v-once</span><br><span class="line">v-text</span><br><span class="line">v-html : 对数据是html标签的生效，差值写法不生效</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="5、v-bind的应用"><a href="#5、v-bind的应用" class="headerlink" title="5、v-bind的应用"></a>5、v-bind的应用</h6><p>绑定动态属性 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2 v-bind:title=&quot;xxx&quot;&gt; &#123;&#123; xxx &#125;&#125;&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">也可以这样 - 加个 : 就变成了变量</span><br><span class="line"></span><br><span class="line">&lt;h2 :title=&quot;xxx&quot;&gt; &#123;&#123; xxx &#125;&#125;&lt;/h2&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> <img src="/2021/05/24/vue/d05.jpg"> </p>
+<h6 id="6、计算属性-computed"><a href="#6、计算属性-computed" class="headerlink" title="6、计算属性 computed"></a>6、计算属性 computed</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//获取两个属性的值，跟写方法差不多，但是这个有缓存</span><br><span class="line"></span><br><span class="line">computed:&#123; </span><br><span class="line">xxxx:&#123;</span><br><span class="line">get()&#123;</span><br><span class="line">ruturn this.xxx + this.xxx</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//获取总价格</span><br><span class="line"></span><br><span class="line">computed:&#123; </span><br><span class="line">totalprice:&#123;</span><br><span class="line">get()&#123;</span><br><span class="line">ruturn this.xxx（对象名）.reduce((s,n)=&gt; s+n.对象里面的属性 )</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="/2021/05/24/vue/d06.jpg"> </p>
+<h6 id="7、事件监听"><a href="#7、事件监听" class="headerlink" title="7、事件监听"></a>7、事件监听</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-on:click </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">语法糖</span><br><span class="line"></span><br><span class="line">@click </span><br></pre></td></tr></table></figure>
+
+<p> <img src="/2021/05/24/vue/d05.jpg">  </p>
+<p>v-on事件修饰符号</p>
+<ul>
+<li><p>.stop阻止事件冒泡  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v-on.stop  不会发生冒泡</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>.self当事件在该元素本身触发时才触发事件</li>
+<li>.capture添加事件侦听器是，使用事件捕获模式</li>
+</ul>
+</li>
+<li><p>.prevent阻止默认事件  - 阻止事件的发生</p>
+</li>
+<li><p>.once事件只触发一次</p>
+</li>
+</ul>
+<h6 id="9、-vue-条件分支指令"><a href="#9、-vue-条件分支指令" class="headerlink" title="9、 vue 条件分支指令"></a>9、 vue 条件分支指令</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-if 和 v-show</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>v-if 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的时间监听和子组件适当地销毁和重建、</li>
+<li>v-show 就简单得多–不管初始条件是什么。元素总是会被渲染，并且只是简单的基于css进行切换</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v-if v-else  </span><br><span class="line"></span><br><span class="line">v-if    v-else-if    v-else</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="10、循环遍历指令"><a href="#10、循环遍历指令" class="headerlink" title="10、循环遍历指令"></a>10、循环遍历指令</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v- for </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">遍历数组: v-for = &quot;(item,[index] in 数组)&quot;   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">遍历对象: v-for = &quot;(value,[key],[index] in 对象)&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/24/vue/d10.jpg">  </p>
+<h6 id="11、模板语法"><a href="#11、模板语法" class="headerlink" title="11、模板语法"></a>11、模板语法</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v - model  双向绑定</span><br></pre></td></tr></table></figure>
+
+<p>v-model指令的本质是：它负责监听用户的输入事件，从而更新数据，并对一些极端场景进行一些特殊处理。同时，v-model会忽略所有表单元素的value、checked,   selected特性的初始值，它总是将vue实例中的数据作为数据来源。然后当输入事件发生时，实时更新vue实例中的数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v - model.lazy  懒加载</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v - model.number  把我们输入的数字字符串变为 number</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v - model.trim  去空格</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="五、Vue组件开发"><a href="#五、Vue组件开发" class="headerlink" title="五、Vue组件开发"></a>五、Vue组件开发</h4><p><strong>概念</strong></p>
+<p><img src="/2021/05/24/vue/e01.jpg">  </p>
+<h6 id="1、组件结构语法"><a href="#1、组件结构语法" class="headerlink" title="1、组件结构语法"></a>1、组件结构语法</h6><p>导入组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import HelloWorld from &#x27;./components/HelloWorld.vue&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>注册模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;App&#x27;,</span><br><span class="line">  // 引入模块  注册 </span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果想让一个样式变为局部变量的话,全局去掉scoped</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;  &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用scss语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped lang:&quot;scss&quot;&gt;  &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="2、组件之间的通信"><a href="#2、组件之间的通信" class="headerlink" title="2、组件之间的通信"></a>2、组件之间的通信</h6><p>父子组件之间的访问方式 </p>
+<p>子组件调用父组件的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$parent 或 $root</span><br></pre></td></tr></table></figure>
+
+<p>父组件调用子组件的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$children 或 $refs </span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="3、插槽"><a href="#3、插槽" class="headerlink" title="3、插槽"></a>3、插槽</h6><p>在组件中放 <slot> </slot>,帮我们占位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot&gt; &lt;/slot&gt; </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/24/vue/e02.jpg">  </p>
+<h4 id="六、在vue中axios请求服务器"><a href="#六、在vue中axios请求服务器" class="headerlink" title="六、在vue中axios请求服务器"></a>六、在vue中axios请求服务器</h4><h6 id="1、用法"><a href="#1、用法" class="headerlink" title="1、用法"></a>1、用法</h6><p><img src="/2021/05/24/vue/f01.jpg">  </p>
+<p><img src="/2021/05/24/vue/f02.jpg">  </p>
+<h6 id="2、封装网络请求"><a href="#2、封装网络请求" class="headerlink" title="2、封装网络请求"></a>2、封装网络请求</h6><h4 id="七、vue路由"><a href="#七、vue路由" class="headerlink" title="七、vue路由"></a>七、vue路由</h4><h6 id="1、写路由的过程"><a href="#1、写路由的过程" class="headerlink" title="1、写路由的过程"></a>1、写路由的过程</h6><p>1.导入路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createRouter,createWebHistory &#125; from &#x27;vue-router&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.创建路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> 	// 路由规则 </span><br><span class="line"> 	const router = [</span><br><span class="line"> 	//引入组件</span><br><span class="line"> 	&#123;</span><br><span class="line"> 	payh:&#x27;/ &#x27;</span><br><span class="line"> 	name: &#x27;Home&#x27;</span><br><span class="line">  component:Home </span><br><span class="line"> 	&#125;,</span><br><span class="line"> 	&#123;</span><br><span class="line"> 	 </span><br><span class="line"> 	&#125;</span><br><span class="line"> 	]</span><br><span class="line"></span><br><span class="line">const router = createRouter(&#123;</span><br><span class="line"> //历史模式</span><br><span class="line"> 	history: createWebHistory(process.env.BASE_URL),</span><br><span class="line">//路由规则</span><br><span class="line"> 	routers</span><br><span class="line"> 	</span><br><span class="line"> </span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>3.导入组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import xxx from &quot;路径&quot;  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xxx =()=&gt;import(&#x27;路径&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4.缺省暴露</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default router</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5.在主入口引入 路由的 js文件 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import router from &#x27;/router&#x27; </span><br></pre></td></tr></table></figure>
+
+<p>6.在App组件里面使用 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link  to=&quot;/&quot;&gt;  首页 &lt;/router-link&gt; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link  to=&quot;/路由里面写的   path&quot;&gt;  xx &lt;/router-link&gt; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/路由里面写的   path&quot;&gt;  xx &lt;/router-link&gt; </span><br></pre></td></tr></table></figure>
+
+<p>7.显示内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view/&gt; </span><br></pre></td></tr></table></figure>
+
+<h6 id="2、router模式切换和懒加载"><a href="#2、router模式切换和懒加载" class="headerlink" title="2、router模式切换和懒加载"></a>2、router模式切换和懒加载</h6><p>1.路由打包注意事项</p>
+<p>如果直接使用import导入组件到路由的话，我们打包的时候，只会合并成一个 js文件</p>
+<p>所有要使用箭头函数导入，这样每个组件就会有一个js文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	// 路由规则 </span><br><span class="line"> 	const router = [</span><br><span class="line"> 	//引入组件</span><br><span class="line"> 	&#123;</span><br><span class="line"> 	payh:&#x27;/ &#x27;</span><br><span class="line"> 	name: &#x27;Home&#x27;</span><br><span class="line">  component: ()=&gt; import(&#x27;组件的位置&#x27;) </span><br><span class="line"> 	&#125;,</span><br><span class="line"> 	&#123;</span><br><span class="line"> 	 </span><br><span class="line"> 	&#125;</span><br><span class="line"> 	]</span><br><span class="line"></span><br><span class="line">const router = createRouter(&#123;</span><br><span class="line"></span><br><span class="line"> // 模式中的：  历史模式</span><br><span class="line"> 	history: createWebHistory(process.env.BASE_URL),</span><br><span class="line">//路由规则</span><br><span class="line"> 	routers</span><br><span class="line"> 	</span><br><span class="line"> </span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2.模式</p>
+<p>有三种模式</p>
+<ul>
+<li><p>Hash：使用URL的hash值来作为路由，用来指导浏览器动作的，对服务器端完全无用，支持所有浏览器。</p>
+</li>
+<li><p>History： 以来HTML5 History API和服务器配置</p>
+</li>
+<li><p>Abstract：支持所有javascript运行模式。如果发现没有浏览器的API，路由会自动强制进入这个模式。</p>
+</li>
+</ul>
+<h6 id="3、自定义router-link和使用命名视图"><a href="#3、自定义router-link和使用命名视图" class="headerlink" title="3、自定义router-link和使用命名视图"></a>3、自定义router-link和使用命名视图</h6><p><img src="/2021/05/24/vue/g01.jpg">  </p>
+<h6 id="4、嵌套路由（子路由）"><a href="#4、嵌套路由（子路由）" class="headerlink" title="4、嵌套路由（子路由）"></a>4、嵌套路由（子路由）</h6><p>我们可以嵌套一层路由在我们这个这个组件下面</p>
+<p>引入子组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xxx =()=&gt;import(&#x27;路径&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">嵌套路由写法</span><br><span class="line"></span><br><span class="line">	// 路由规则 </span><br><span class="line"> 	const router = [</span><br><span class="line"> 	//引入组件</span><br><span class="line"> 	&#123;</span><br><span class="line"> 	payh:&#x27;/&#x27;,</span><br><span class="line"> 	name: &#x27;Home&#x27;,</span><br><span class="line">  component: Home,</span><br><span class="line">  //嵌套路由，多个用,号隔开  </span><br><span class="line">  //如果要加默认显示的话，加一个空的路径 ，然后设置显示的页面</span><br><span class="line">  children:[</span><br><span class="line">  &#123;</span><br><span class="line">  //点击到这就会默认显示下面的内容</span><br><span class="line">  path:&#x27;&#x27;,</span><br><span class="line">   component: 组件名</span><br><span class="line">  &#125;,</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#x27;子组件的路径&#x27;,</span><br><span class="line">  		 component: 组件名   （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  	</span><br><span class="line">  	&#125;</span><br><span class="line">  	 		</span><br><span class="line">  ]</span><br><span class="line">  </span><br><span class="line"> 	&#125;,</span><br><span class="line"> 	&#123;</span><br><span class="line"> 	 </span><br><span class="line"> 	&#125;</span><br><span class="line"> 	]</span><br></pre></td></tr></table></figure>
+
+<h6 id="5、动态路由和参数传递"><a href="#5、动态路由和参数传递" class="headerlink" title="5、动态路由和参数传递"></a>5、动态路由和参数传递</h6><p><strong>多个文章用相同的组件，避免重复组件，我们只需要传对应的参数，获取到数据即可，一个模板，参数切换</strong></p>
+<p>传递参数主要有两种类型：</p>
+<p>params</p>
+<p>params的类型：</p>
+<ul>
+<li><p>配置路由格式：/user/：id（动态路由）</p>
+</li>
+<li><p>传递的方式在path后面对应的值：to=”‘/user/‘+uid”</p>
+</li>
+<li><p>传递后形成的路径：/user/9，/user/zs</p>
+</li>
+<li><p>  接收参数：$route.params.id</p>
+</li>
+</ul>
+<p>query</p>
+<p>query的类型：</p>
+<ul>
+<li><p>配置路由格式：/user，正常配置</p>
+</li>
+<li><p>传递的方式：对象中使用query的key作为传递方式：to={path：’/‘，query：{id：1，name：’abc’}</p>
+</li>
+<li><p>传递后形成的路径：/user？id=9，/user？id=zs</p>
+</li>
+<li><p> 接收参数：$route.query.name</p>
+</li>
+</ul>
+<p><strong>单个传参的写法</strong></p>
+<p>定义一个json数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">arr[</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt;</span><br><span class="line">&lt;router-link v-for=&quot;item in xxxx &quot;  :to=&quot;   &#x27;/路由里面写的path&#x27; +item.xxxx &quot;&gt; &#123;&#123;item.xxx&#125;&#125; &lt;/router-link&gt; </span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置子路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">children:[</span><br><span class="line">  &#123;</span><br><span class="line">  //点击到这就会默认显示下面的内容</span><br><span class="line">  path:&#x27;&#x27;,</span><br><span class="line">   component: 组件名</span><br><span class="line">  &#125;,</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#x27;子组件的路径&#x27;,</span><br><span class="line">  		 component: 组件名   （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  	&#125;,</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#x27;xxx/:id&#x27;,</span><br><span class="line">  		 component: 组件名   （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  	&#125;,</span><br><span class="line">  	 		</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>单个传参的写法</strong></p>
+<p>配置子路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">children:[</span><br><span class="line">  &#123;</span><br><span class="line">  //点击到这就会默认显示下面的内容</span><br><span class="line">  path:&#x27;&#x27;,</span><br><span class="line">   component: 组件名</span><br><span class="line">  &#125;,</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#x27;子组件的路径&#x27;,</span><br><span class="line">  		 component: 组件名   （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  	&#125;,</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#x27;xxx/:id&#x27;,</span><br><span class="line">  		 component: 组件名   （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  	&#125;,</span><br><span class="line">  	 		</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="6、重定向和别名"><a href="#6、重定向和别名" class="headerlink" title="6、重定向和别名"></a>6、重定向和别名</h6><p><strong>重定向：</strong></p>
+<p>重定向也在routes配置中完成，要从重定向/a到/b</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const routes = [&#123; path: &#x27;/home&#x27;, redirect:&#x27;/&#x27;&#125;]</span><br><span class="line">const routes = [&#123; path:&#x27;*/home&#x27;, redirect: &#123; name: &#x27;homepage&#x27;&#125;] path:&#x27;/search/:searchText&#x27;,</span><br><span class="line">redirect: to =&gt;&#123;</span><br><span class="line">return &#123; path: &#x27;/search&#x27;, query:&#123;q:to.params.searchText&#125;&#125; &#125;.</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">重定向写法</span><br><span class="line">&#123;</span><br><span class="line">  		path:&#x27;子组件的路径&#x27;,</span><br><span class="line">  		 component: 组件名 ,  （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  		 //路径写法</span><br><span class="line">  		 redirect:&#x27;重定向到那个路径&#x27;</span><br><span class="line">  		 //名字写法</span><br><span class="line">  		  redirect:&#123; name: xxx&#125;</span><br><span class="line">  		  </span><br><span class="line">  	</span><br><span class="line">  	&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">子路由之间的重定向  动态传参数之间的重定向</span><br><span class="line">&#123;</span><br><span class="line">  		path:&#x27;xxx:id&#x27;,</span><br><span class="line">  		 component: 组件名 ,  （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  		 </span><br><span class="line">  		 //箭头函数写法</span><br><span class="line">  		 redirect: to=&gt;&#123;</span><br><span class="line">  		 </span><br><span class="line">  		 return&#123;</span><br><span class="line">  		 path:&#x27;xxxx&#x27;,</span><br><span class="line">  		 //动态传参</span><br><span class="line">  		 query:&#123;name:&#x27;xxx&#x27;,age:xx&#125;</span><br><span class="line">  		 </span><br><span class="line">  		 &#125;</span><br><span class="line">  		 </span><br><span class="line">  		 &#125;</span><br><span class="line">  	</span><br><span class="line">  	</span><br><span class="line">  	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>别名：</strong>  跳转给另外一个名字</p>
+<p>别名/as/home表示用户访问时/home，URL保持不变/home，但将被匹配，就像用户正在访问时一样/。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const routes = [&#123; path:&#x27;/&#x27;, component: Homepage, alias:&#x27;/home&#x27;&#125;]</span><br><span class="line">alias: [&#x27;people&#x27;, list&#x27;]</span><br><span class="line">alias [/:id&#x27;,&quot;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">不加参数</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  		path:&#x27;子组件的路径&#x27;,</span><br><span class="line">  		name:xxx,</span><br><span class="line">  		 component: 组件名 ,  （const xxx =()=&gt;import(&#x27;路径&#x27;)）</span><br><span class="line">  		 </span><br><span class="line">  		 //别名</span><br><span class="line">  		 alias:[&#x27;/xxx&#x27;,&#x27;/xxx&#x27;]</span><br><span class="line">  		 </span><br><span class="line">  	</span><br><span class="line">  	&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">加参数</span><br><span class="line">		 //别名</span><br><span class="line">  		 alias:[&#x27;xx/:id&#x27;]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="7、导航守卫"><a href="#7、导航守卫" class="headerlink" title="7、导航守卫"></a>7、导航守卫</h6><p><strong>前置守卫</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">前置守卫</span><br><span class="line">//to：Route：即将要进入的目标路由对象，from： Route：当前导航正要离开的路由router.beforeEach((to,from)=&gt;&#123;</span><br><span class="line">/.turn false</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>后置钩子</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">router.afterEach((to,from)=&gt;&#123;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>设置守卫</strong></p>
+<p>在index文件里面去配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//从哪到哪的 to：Route：即将要进入的目标路由对象，from： Route：当前导航正要离开的路由</span><br><span class="line"></span><br><span class="line">router.beforeEach( guard( to , from  )=&gt; &#123;</span><br><span class="line"></span><br><span class="line">//前置守卫</span><br><span class="line">document.title = to.meta.title;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;）</span><br></pre></td></tr></table></figure>
+
+
+
+<p>设置钩子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">router.afterEach(  guard( to , from  )=&gt;&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">&#125; )</span><br></pre></td></tr></table></figure>
+
+
+
+<p>有多种机会植入路由导航过程中：全局的，单个路由独享的，或者组件级的。<br>全局导航守卫<br>路由独享的守卫<br>组件内的守卫</p>
+<h6 id="7、-keep-alive和vue-router结合"><a href="#7、-keep-alive和vue-router结合" class="headerlink" title="7、 keep-alive和vue-router结合"></a>7、 keep-alive和vue-router结合</h6><p>路由缓存，我们在这个标题里面写，它执行的时候，就不会执行到生命周期</p>
+<p><strong>keep-alive</strong></p>
+<p>keep-alive是Vue内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染。<br>include：正则表达式<br>exclude：正则表达式</p>
+<p><strong>router-view</strong></p>
+<p>router-view是vue-router内置组件，如果直接包含在keep-alive里面，所有路径匹配到的组件都会被缓存。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view v-slot=&quot;&#123; Component &#125;&quot;&gt;</span><br><span class="line">&lt;transition&gt;</span><br><span class="line">&lt;keep-alive&gt;</span><br><span class="line">&lt;component :is=&quot;Component&quot;/&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line">&lt;/transition&gt;</span><br><span class="line">&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="八、Vue-X"><a href="#八、Vue-X" class="headerlink" title="八、Vue  X"></a>八、Vue  X</h4><p>介绍</p>
+<p>Vuex是一个专为Vue.js应用程序开发的状态管理模式。<br>就是一个加强版的data！在单页应用中会有一个data函数，管理当前应用的状态。处理大量的需要在组件间传递的数据，直接定义一个全局的data属性保存就行了。<br>如果我们的页面比较简单，切记千万不要没事找事引入Vuex，我们使用Vuex是因为项目变得复杂之后，有很多数据需要在父组件、子组件和孙组件之间传递，处理起来很繁琐，于是就需要Vuex这样一个可以对这一部分数据进行统一管理的东西。<br>也是响应式</p>
+<p>什么情况需要使用Vuex管理状态在多个组件间共享？<br>大型项目中组件很多，多个组件中共用的数据<br>例如：用户的登录状态、用户名称、头像、地理位置信息等<br>例如：商品的收藏、购物车中的物品。</p>
+<h6 id="1、简单使用vue-X（单页）"><a href="#1、简单使用vue-X（单页）" class="headerlink" title="1、简单使用vue X（单页）"></a>1、简单使用vue X（单页）</h6><p>会有一个store目录，里面有一个index.js的文，在state里面可以定义全局变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createstore &#125; from &#x27;vuex</span><br><span class="line">export default createstore( options:(</span><br><span class="line"></span><br><span class="line">state:&#123;</span><br><span class="line">	</span><br><span class="line">	xxx:0</span><br><span class="line">	</span><br><span class="line">&#125;，</span><br><span class="line">mutations:&#123;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">actions:&#123;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">modules:&#123;</span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用全局变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用插值的方式  &#123;&#123; $store.state.变量 &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="2、使用devtools工具查看状态管理"><a href="#2、使用devtools工具查看状态管理" class="headerlink" title="2、使用devtools工具查看状态管理"></a>2、使用devtools工具查看状态管理</h6><p>使用mutations管理状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">写一个方法,括号里面写state会自动传参</span><br><span class="line">mutations: &#123;</span><br><span class="line">	xxx(state)&#123;</span><br><span class="line">	state.xxxx++</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在页面使用，调用的时候直接写我们methods里面自己定义的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">//自定义方法</span><br><span class="line">xxx()&#123;</span><br><span class="line"></span><br><span class="line">//使用comit，调用methods里面定义的方法</span><br><span class="line">this.$router.comit(&#x27;mutations写的方法名&#x27;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="3、mutations传参问题"><a href="#3、mutations传参问题" class="headerlink" title="3、mutations传参问题"></a>3、mutations传参问题</h6><p><strong>单的传参</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">//自定义方法</span><br><span class="line">xxx()&#123;</span><br><span class="line">let count = 2;</span><br><span class="line">this.$router.comit(&#x27;mutations写的方法名&#x27;,count)   //count可以传给mutations方法</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">//接收传过来的参数</span><br><span class="line">	xxx(state,count)&#123;</span><br><span class="line">	state.xxx+=count</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多的传参，建议声明成一个对象</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const xxx = &#123;</span><br><span class="line"></span><br><span class="line">count:1,</span><br><span class="line">num:1</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>覆盖的形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">//自定义方法</span><br><span class="line">xxx()&#123;</span><br><span class="line"></span><br><span class="line">const xxx = &#123;</span><br><span class="line"></span><br><span class="line">count:1,</span><br><span class="line">num:1</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">this.$router.comit(&#x27;mutations写的方法名&#x27;,xxx)   //count可以传给mutations方法</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">//接收传过来的参数</span><br><span class="line">//接收一个数据对象</span><br><span class="line"></span><br><span class="line">	xxx(state,xxx)&#123;</span><br><span class="line">	state.xxx+=(xxx.count+xxx.num)</span><br><span class="line">	&#125;,</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="4、Getters的使用"><a href="#4、Getters的使用" class="headerlink" title="4、Getters的使用"></a>4、Getters的使用</h6><p>写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line"></span><br><span class="line">xxx(state):&#123;</span><br><span class="line">	</span><br><span class="line">	return state.xxx * state.xxx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>页面调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">插值调用 &#123;&#123; $store.getters.xxxx &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果state有一个数组的话 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">state:&#123;</span><br><span class="line">	arrList:</span><br><span class="line">	[</span><br><span class="line">	&#123;naem:xxxx,price:10&#125;,</span><br><span class="line">	&#123;naem:xxxx,price:20&#125;,</span><br><span class="line">	&#123;naem:xxxx,price:30&#125;,</span><br><span class="line"></span><br><span class="line">	]	</span><br><span class="line">&#125;，</span><br></pre></td></tr></table></figure>
+
+<p>在getters里面计算总和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line"></span><br><span class="line">totalprice(state)&#123;</span><br><span class="line"></span><br><span class="line">return state.arrList.reduce(s,n =&gt; s+n.price,0);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>页面调用总和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">插值调用 &#123;&#123; $store.getters.xxxx &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>返回数组里面的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line"></span><br><span class="line">xxx(state,getters):&#123;</span><br><span class="line">	</span><br><span class="line">	return getters.xxx.reduce(s,n =&gt; s+n.price,0);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>页面调用返回的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">插值调用 &#123;&#123; $store.getters.xxxx &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按照条件调用返回数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line"></span><br><span class="line">xxxx(state,getters)&#123;</span><br><span class="line"></span><br><span class="line">return function(price)&#123;</span><br><span class="line"></span><br><span class="line">state.arrList.filter(n =&gt;  n.price &gt; price</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//也可以写成一行</span><br><span class="line">return price =&gt;state.arrList.filter( n =&gt;  n.price &gt; price);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>页面调用按照条件调用返回数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">插值调用 &#123;&#123; $store.getters.xxxx() &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="5、Actions异步处理操作"><a href="#5、Actions异步处理操作" class="headerlink" title="5、Actions异步处理操作"></a>5、Actions异步处理操作</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">//上下文参数  context</span><br><span class="line">xxx(context)&#123;</span><br><span class="line">//三秒后修改属性的值</span><br><span class="line">setTimeout( ()=&gt;&#123;</span><br><span class="line"></span><br><span class="line">//通过context.commit 去调用 mutations 的方法</span><br><span class="line"></span><br><span class="line">context.commit(&#x27;xxx&#x27;)</span><br><span class="line"></span><br><span class="line">&#125;3000);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">//自定义方法</span><br><span class="line">xxx()&#123;</span><br><span class="line">	this.$store.dispatch(&#x27;&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="6、Moduls模块划分和文件拆分"><a href="#6、Moduls模块划分和文件拆分" class="headerlink" title="6、Moduls模块划分和文件拆分"></a>6、Moduls模块划分和文件拆分</h6><p>可以把里面的方法拆分成模块化，相当于把moduls模块中的属性绑定到 state中 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const user = &#123;</span><br><span class="line">state:()=&gt;(&#123;</span><br><span class="line"></span><br><span class="line">name:xxx,</span><br><span class="line">age:11</span><br><span class="line"></span><br><span class="line">&#125;),</span><br><span class="line">getters: &#123;</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">&#125;,</span><br><span class="line">actions :&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后通过Moduls模块化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">moduls:&#123; 你在上面 const 定义的模块名 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>页面调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通过插值 &#123;&#123; $store.state.user.xxx &#125;&#125;     </span><br><span class="line"></span><br><span class="line">通过插值 &#123;&#123; $store.state.定义的模块名.里面的属性 &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="九、Composition-API"><a href="#九、Composition-API" class="headerlink" title="九、Composition API"></a>九、Composition API</h5><h5 id="常用部分"><a href="#常用部分" class="headerlink" title="常用部分"></a>常用部分</h5><p>引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//使用属性就要引入,都从 vue中导入</span><br><span class="line">import &#123; xxx,xxx,xx &#125; from &#x27;vue&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="1、setup"><a href="#1、setup" class="headerlink" title="1、setup"></a>1、setup</h6><ul>
+<li>vue新的option，所有的组合API函数都在此使用，只在初始化时执行一次</li>
+<li>函数如果返回对象，对象中的属性或方法，<a href="">模板中可以直接使用</a></li>
+</ul>
+<h6 id="2、ref"><a href="#2、ref" class="headerlink" title="2、ref"></a>2、ref</h6><ul>
+<li>作用：定义一个数据的响应式</li>
+<li>语法：const xxx = ref(initValue)<ul>
+<li>创建一个包含响应式数据的引用（Ref）对象</li>
+<li>js中操作数据:xxx.value</li>
+<li>模板操作数据，不需要.value</li>
+<li>一般用来定义一个基本类型的响应式数据</li>
+</ul>
+</li>
+</ul>
+<h6 id="3、reactive"><a href="#3、reactive" class="headerlink" title="3、reactive"></a>3、reactive</h6><ul>
+<li><p>作用：定义多个数据的响应式 </p>
+</li>
+<li><p>语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const proxy = reactive(obj)：接收一个普通对象然后返回该对象的响应式代理器对象</span><br></pre></td></tr></table></figure></li>
+<li><p>响应式转换是“深层”的：会影响对象内部所有的嵌套的属性</p>
+</li>
+</ul>
+<h6 id="4、Composition中的计算属性-（computed）"><a href="#4、Composition中的计算属性-（computed）" class="headerlink" title="4、Composition中的计算属性 （computed）"></a>4、Composition中的计算属性 （computed）</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//使用属性就要引入</span><br><span class="line">import &#123; ref ,computed &#125; from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">//定义属性</span><br><span class="line">setup()&#123;</span><br><span class="line">const user = reactive(&#123;</span><br><span class="line"></span><br><span class="line">firstname:&#x27;xxx&#x27;,</span><br><span class="line"></span><br><span class="line">lastname:&#x27;xxc&#x27;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//使用计算属性 （computed）</span><br><span class="line"></span><br><span class="line">let fullname = computed( ()=&gt;&#123;</span><br><span class="line"></span><br><span class="line">return user.firstname+user.lastname;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//setup里面声明的都要返回</span><br><span class="line">//之外的也要返回</span><br><span class="line"></span><br><span class="line">return&#123;</span><br><span class="line">	</span><br><span class="line">	//用折叠式返回</span><br><span class="line">	...toRefs(user)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//页面使用</span><br><span class="line"></span><br><span class="line">&#123;&#123;xxx&#125;&#125;  //为什么不是 user.xxx  因为我们使用了	折叠式返回</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="5、Composition中的监听属性-watch"><a href="#5、Composition中的监听属性-watch" class="headerlink" title="5、Composition中的监听属性(   watch   )"></a>5、Composition中的监听属性(   watch   )</h6><p>功能：监视我们数据变化的时候做什么事情，跟计算属性不一样，计算属性是把结果展示给页面</p>
+<p><strong>使用ref的时候，数据监听</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//使用属性就要引入</span><br><span class="line">import &#123; ref ,wacht &#125; from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">//定义属性</span><br><span class="line">setup()&#123;</span><br><span class="line">	let a = ref(1);</span><br><span class="line">	let b = ref(2);</span><br><span class="line">	</span><br><span class="line">	//上面的 a , b 变化了  就会 执行watch里面的代码</span><br><span class="line">	watch( ()=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	console.log(a.value+&#x27;----&#x27;+b.value)</span><br><span class="line">	</span><br><span class="line">	&#125;)</span><br><span class="line">	</span><br><span class="line">	return&#123;</span><br><span class="line">		a,</span><br><span class="line">		b</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>只监控一个数据的时候</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch( xx , ()=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	console.log(&#x27;----&#x27;)</span><br><span class="line">	</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>只监控一个数据的时候,也初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch( xx , ()=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	console.log(&#x27;----&#x27;)</span><br><span class="line">	</span><br><span class="line">	&#125;,&#123;immeeiate:true&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>监控多个数据的时候,也初始化,监听多个用数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch( [xx,xxx] , ()=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	console.log(&#x27;----&#x27;)</span><br><span class="line">	</span><br><span class="line">	&#125;,&#123;immeeiate:true&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>想要看到新的值和旧的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch( xx , (newA,oldA)=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	console.log(newA+&#x27;----&#x27;+oidA)</span><br><span class="line">	</span><br><span class="line">	&#125;,&#123;immeeiate:true&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用reactive的时候，数据监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//定义属性</span><br><span class="line">setup()&#123;</span><br><span class="line">const user = reactive(&#123;</span><br><span class="line"></span><br><span class="line">a:1,</span><br><span class="line"></span><br><span class="line">b:2</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>监控一整个对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch( user , ()=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	console.log(&#x27;----&#x27;)</span><br><span class="line">	</span><br><span class="line">	&#125;,&#123;immeeiate:true&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用回调函数，可以监控里面的单个数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch( [ ()=&gt;user.a,()=&gt;user.b] , ([newa,loda],[newb,lodb])=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	console.log(newa+&#x27;----&#x27;+loda)</span><br><span class="line">	</span><br><span class="line">	&#125;,&#123;immeeiate:true&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="6、Composition的生命周期"><a href="#6、Composition的生命周期" class="headerlink" title="6、Composition的生命周期"></a>6、Composition的生命周期</h6><p><img src="/2021/05/24/vue/i06.jpg"> </p>
+<h6 id="7、在Composition-API中provide和inject使用"><a href="#7、在Composition-API中provide和inject使用" class="headerlink" title="7、在Composition API中provide和inject使用"></a>7、在Composition API中provide和inject使用</h6><p><strong>功能介绍</strong></p>
+<p>父子组件：通过props，$emit， 【$root，$parent，$children】<br>非父子组件：Vuex实现，父子层层传递、$ref<br>Vue官网建议，在正常情况下，这两种方式已经能满足绝大多数甚至所有的业务需求，对于应用程序代码应优先使它们处理。<br>provide/inject这对选项允许一个祖先组件向其所有子孙后代组件注入一个依赖，不论组件层次有多深，并在起上游关系成立的时间里始终生效。<br>provide就相当于加强版父组件prop，可以跨越中间组件，inject就相当于加强版子组件的props</p>
+<p><strong>——————</strong></p>
+<p>不使用setup父子之间传值，数据不是响应的</p>
+<p>父类传值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">父类传子类用provide,子类接收用inject</span><br><span class="line"></span><br><span class="line">data()&#123;</span><br><span class="line"></span><br><span class="line">return &#123; </span><br><span class="line"></span><br><span class="line">title: &#x27;xxxxxxxxxxxxxx&#x27;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">provide()&#123;</span><br><span class="line"></span><br><span class="line">return &#123;</span><br><span class="line"></span><br><span class="line">title:this.title</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>子类接收</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inject:[ &#x27;父类传过来的&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用setup是响应式的,let传字符和值，reactive传对象（搭配 toRefs使用）</p>
+<p>父类传值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">setup()&#123;</span><br><span class="line"></span><br><span class="line">let title = ref(&#x27;要写的文字&#x27;);</span><br><span class="line"></span><br><span class="line">provide(&#x27;父类传给子类的名字&#x27;,&#x27;title&#x27;);</span><br><span class="line"></span><br><span class="line">return&#123;</span><br><span class="line"></span><br><span class="line">	title</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>子类接收</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setup()&#123;</span><br><span class="line"></span><br><span class="line">let title = inject(&#x27;子类接收父类给的名字&#x27;);</span><br><span class="line">setup()&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="8、Composition-API结合路由使用"><a href="#8、Composition-API结合路由使用" class="headerlink" title="8、Composition API结合路由使用"></a>8、Composition API结合路由使用</h6><h6 id="9、Composition-API结合Vue-X使用"><a href="#9、Composition-API结合Vue-X使用" class="headerlink" title="9、Composition API结合Vue X使用"></a>9、Composition API结合Vue X使用</h6><h4 id="十、创建方式"><a href="#十、创建方式" class="headerlink" title="十、创建方式"></a>十、创建方式</h4><h5 id="1、脚手架创建项目"><a href="#1、脚手架创建项目" class="headerlink" title="1、脚手架创建项目"></a>1、脚手架创建项目</h5><p>可以进入到我们的vue-ui界面，更快的创建和配置项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue ui</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/24/vue/a05-2.png"> </p>
+<p><img src="/2021/05/24/vue/a05-3.png"> </p>
+<p>我们在创建这里选择在哪个创建项目</p>
+<p><img src="/2021/05/24/vue/a05-4.png"> </p>
+<p>配置基本参数</p>
+<p><img src="/2021/05/24/vue/a05-5.png">  </p>
+<p>版本选择</p>
+<p><img src="/2021/05/24/vue/a05-6.png"> </p>
+<p>手动配置需要的库</p>
+<p><img src="/2021/05/24/vue/a05-6.png"> </p>
+<p>启动命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run service</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2、vite创建"><a href="#2、vite创建" class="headerlink" title="2、vite创建"></a>2、vite创建</h5><p>步骤</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init vite-app + 项目名</span><br></pre></td></tr></table></figure>
+
+<p>cd到刚刚创建好的项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd + 项目文件夹</span><br></pre></td></tr></table></figure>
+
+<p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>启动命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jack-su.com/2021/05/24/vue/" data-id="ckuruevs90003xj0kfl4v67rx" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2021/05/24/hello-world/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      Hello World
+      
+    </div>
+  </a>
+  
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>This is my jack-su blog &copy; 2021</li>
+      
+        <li>ZHWANGART</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="This is my jack-su blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>
